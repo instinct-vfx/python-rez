@@ -1,6 +1,7 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+ARG WINDOWS_VERSION=1809-amd64
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+FROM mcr.microsoft.com/windows/servercore:$WINDOWS_VERSION
 
-ENTRYPOINT ["/entrypoint.sh"]
+SHELL ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "ByPass"]
+
+ENTRYPOINT ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "ByPass"]
